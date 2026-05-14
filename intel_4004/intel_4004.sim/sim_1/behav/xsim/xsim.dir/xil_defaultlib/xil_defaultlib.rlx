@@ -1,0 +1,8 @@
+0.7
+2020.2
+Nov 14 2025
+19:37:27
+C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/stub.vhd,1777988894,vhdl,C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/tb_mux_interno.vhd,,,stub_componente,,,,,,,,
+C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/tb_mux_interno.vhd,1777989134,vhdl,,,,tb_bus_interno_mux,,,,,,,,
+C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/bus_interno_mux.vhd,1777988130,vhdl,C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/tb_mux_interno.vhd,,,bus_interno_mux,,,,,,,,
+C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/pkg_4004.vhd,1777986390,vhdl,C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/stub.vhd;C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/tb_mux_interno.vhd;C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/bus_interno_mux.vhd,,,pkg_4004,,,,,,,,

@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../intel_4004.srcs/sources_1/new/pkg_4004.vhd" \
+"../../../../intel_4004.srcs/sources_1/new/bus_interno_mux.vhd" \
+"../../../../intel_4004.srcs/sim_1/new/stub.vhd" \
+"../../../../intel_4004.srcs/sim_1/new/tb_mux_interno.vhd" \
+
+# Do not sort compile order
+nosort

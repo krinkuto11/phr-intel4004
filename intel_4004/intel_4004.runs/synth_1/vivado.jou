@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Thu May 14 10:40:27 2026
+# Process ID         : 1056
+# Current directory  : C:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1
+# Command line       : vivado.exe -log cpu_4004_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source cpu_4004_top.tcl
+# Log file           : C:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1/cpu_4004_top.vds
+# Journal file       : C:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1\vivado.jou
+# Running On         : ANDERREGIDOFDF2
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26100
+# Processor Detail   : Apple Silicon
+# CPU Frequency      : 3072 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 8
+# Host memory        : 12878 MB
+# Swap memory        : 1946 MB
+# Total Virtual      : 14824 MB
+# Available Virtual  : 4996 MB
+#-----------------------------------------------------------
+source cpu_4004_top.tcl -notrace

@@ -1,0 +1,9 @@
+Time resolution is 1 ps
+Note: --- INICIANDO TEST 1: REPOSO ---
+Time: 10 ns  Iteration: 0  Process: /tb_bus_interno_mux/process_tests  File: C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/tb_mux_interno.vhd
+Note: --- INICIANDO TEST 2: RUTEO ---
+Time: 20 ns  Iteration: 0  Process: /tb_bus_interno_mux/process_tests  File: C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/tb_mux_interno.vhd
+Note: --- INICIANDO TEST 3: COLISION ---
+Time: 85 ns  Iteration: 0  Process: /tb_bus_interno_mux/process_tests  File: C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/tb_mux_interno.vhd
+Note: --- TODOS LOS TESTS SUPERADOS CORRECTAMENTE ---
+Time: 105 ns  Iteration: 0  Process: /tb_bus_interno_mux/process_tests  File: C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/tb_mux_interno.vhd

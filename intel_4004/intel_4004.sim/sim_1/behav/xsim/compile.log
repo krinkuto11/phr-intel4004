@@ -1,0 +1,7 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/pkg_4004.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/bus_interno_mux.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'bus_interno_mux'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/stub.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'stub_componente'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/anderregidor/intel_4004/intel_4004.srcs/sim_1/new/tb_mux_interno.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_bus_interno_mux'
