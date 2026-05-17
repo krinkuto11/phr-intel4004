@@ -3,12 +3,12 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Thu May 14 10:40:27 2026
-# Process ID         : 1056
-# Current directory  : C:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1
+# Start of session at: Thu May 14 18:31:27 2026
+# Process ID         : 7796
+# Current directory  : X:/intel_4004/intel_4004.runs/synth_1
 # Command line       : vivado.exe -log cpu_4004_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source cpu_4004_top.tcl
-# Log file           : C:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1/cpu_4004_top.vds
-# Journal file       : C:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1\vivado.jou
+# Log file           : X:/intel_4004/intel_4004.runs/synth_1/cpu_4004_top.vds
+# Journal file       : X:/intel_4004/intel_4004.runs/synth_1\vivado.jou
 # Running On         : ANDERREGIDOFDF2
 # Platform           : Windows Server 2016 or Windows 10
 # Operating System   : 26100
@@ -19,258 +19,15 @@
 # Host memory        : 12878 MB
 # Swap memory        : 1946 MB
 # Total Virtual      : 14824 MB
-# Available Virtual  : 4996 MB
+# Available Virtual  : 8741 MB
 #-----------------------------------------------------------
 source cpu_4004_top.tcl -notrace
-create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 626.172 ; gain = 220.387
-Command: read_checkpoint -auto_incremental -incremental C:/Users/anderregidor/intel_4004/intel_4004.srcs/utils_1/imports/synth_1/cpu_4004_top.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/anderregidor/intel_4004/intel_4004.srcs/utils_1/imports/synth_1/cpu_4004_top.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 624.766 ; gain = 222.820
+Command: read_checkpoint -auto_incremental -incremental X:/intel_4004/intel_4004.srcs/utils_1/imports/synth_1/cpu_4004_top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from X:/intel_4004/intel_4004.srcs/utils_1/imports/synth_1/cpu_4004_top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top cpu_4004_top -part xc7a35ticpg236-1L
-Starting synth_design
-Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35ti'
-INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35ti'
-INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
-INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
-INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
-INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 15156
----------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1174.277 ; gain = 532.531
----------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'cpu_4004_top' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd:27]
-INFO: [Synth 8-638] synthesizing module 'bus_interno_mux' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/bus_interno_mux.vhd:46]
-INFO: [Synth 8-256] done synthesizing module 'bus_interno_mux' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/bus_interno_mux.vhd:46]
-INFO: [Synth 8-638] synthesizing module 'data_bus_buffer' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/data_bus_buffer.vhd:14]
-INFO: [Synth 8-256] done synthesizing module 'data_bus_buffer' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/data_bus_buffer.vhd:14]
-INFO: [Synth 8-638] synthesizing module 'flag_flip_flops' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/flag_flip_flops.vhd:45]
-INFO: [Synth 8-638] synthesizing module 'd_ff_en' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/d_ff_en.vhd:15]
-INFO: [Synth 8-256] done synthesizing module 'd_ff_en' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/d_ff_en.vhd:15]
-INFO: [Synth 8-256] done synthesizing module 'flag_flip_flops' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/flag_flip_flops.vhd:45]
-INFO: [Synth 8-638] synthesizing module 'instruction_register' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/instruction_register.vhd:39]
-INFO: [Synth 8-256] done synthesizing module 'instruction_register' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/instruction_register.vhd:39]
-INFO: [Synth 8-638] synthesizing module 'stack_3L' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd:17]
-INFO: [Synth 8-3491] module 'puntero_stack' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd:4' bound to instance 'SP' of component 'puntero_stack' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd:58]
-INFO: [Synth 8-638] synthesizing module 'puntero_stack' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd:25]
-INFO: [Synth 8-3491] module 'flipflopJK' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/flipflopJK.vhd:3' bound to instance 'b1' of component 'flipflopJK' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd:39]
-INFO: [Synth 8-638] synthesizing module 'flipflopJK' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/flipflopJK.vhd:9]
-INFO: [Synth 8-256] done synthesizing module 'flipflopJK' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/flipflopJK.vhd:9]
-INFO: [Synth 8-3491] module 'clk_up_down' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd:13' bound to instance 'clk_incremento' of component 'clk_up_down' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd:40]
-INFO: [Synth 8-638] synthesizing module 'clk_up_down' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd:18]
-INFO: [Synth 8-256] done synthesizing module 'clk_up_down' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd:18]
-INFO: [Synth 8-3491] module 'flipflopJK' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/flipflopJK.vhd:3' bound to instance 'b2' of component 'flipflopJK' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd:41]
-INFO: [Synth 8-256] done synthesizing module 'puntero_stack' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd:25]
-INFO: [Synth 8-3491] module 'registro_12b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_12b.vhd:4' bound to instance 'REG0' of component 'registro_12b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd:71]
-INFO: [Synth 8-638] synthesizing module 'registro_12b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_12b.vhd:14]
-INFO: [Synth 8-256] done synthesizing module 'registro_12b' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_12b.vhd:14]
-INFO: [Synth 8-3491] module 'registro_12b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_12b.vhd:4' bound to instance 'REG1' of component 'registro_12b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd:81]
-INFO: [Synth 8-3491] module 'registro_12b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_12b.vhd:4' bound to instance 'REG2' of component 'registro_12b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd:91]
-INFO: [Synth 8-3491] module 'registro_12b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_12b.vhd:4' bound to instance 'REG3' of component 'registro_12b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd:101]
-INFO: [Synth 8-3491] module 'mtx_stack' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/mtx_stack.vhd:4' bound to instance 'MUX' of component 'mtx_stack' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd:110]
-INFO: [Synth 8-638] synthesizing module 'mtx_stack' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/mtx_stack.vhd:15]
-INFO: [Synth 8-256] done synthesizing module 'mtx_stack' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/mtx_stack.vhd:15]
-INFO: [Synth 8-256] done synthesizing module 'stack_3L' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd:17]
-INFO: [Synth 8-638] synthesizing module 'scratch_pad' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:32]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:133]
-INFO: [Synth 8-638] synthesizing module 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:14]
-INFO: [Synth 8-256] done synthesizing module 'registro_4b' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:14]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:146]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:133]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:146]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:133]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:146]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:133]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:146]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:133]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:146]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:133]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:146]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:133]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:146]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:133]
-INFO: [Synth 8-3491] module 'registro_4b' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd:4' bound to instance 'REG_i' of component 'registro_4b' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:146]
-INFO: [Synth 8-3491] module 'mtx_scratchpad' declared at 'C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/mtx_scratchpad.vhd:4' bound to instance 'MX' of component 'mtx_scratchpad' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:166]
-INFO: [Synth 8-638] synthesizing module 'mtx_scratchpad' [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/mtx_scratchpad.vhd:17]
-INFO: [Synth 8-256] done synthesizing module 'mtx_scratchpad' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/mtx_scratchpad.vhd:17]
-INFO: [Synth 8-256] done synthesizing module 'scratch_pad' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd:32]
-INFO: [Synth 8-256] done synthesizing module 'cpu_4004_top' (0#1) [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd:27]
-WARNING: [Synth 8-3848] Net sync in module/entity cpu_4004_top does not have driver. [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd:18]
-WARNING: [Synth 8-3848] Net cm_rom in module/entity cpu_4004_top does not have driver. [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd:19]
-WARNING: [Synth 8-3848] Net cm_ram in module/entity cpu_4004_top does not have driver. [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd:20]
-WARNING: [Synth 8-3848] Net cable_acc_out in module/entity cpu_4004_top does not have driver. [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd:44]
-WARNING: [Synth 8-3848] Net cable_tmp_reg_out in module/entity cpu_4004_top does not have driver. [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd:47]
-WARNING: [Synth 8-3848] Net cable_alu_out in module/entity cpu_4004_top does not have driver. [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd:53]
-WARNING: [Synth 8-3848] Net cable_decoder_out in module/entity cpu_4004_top does not have driver. [C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd:63]
-WARNING: [Synth 8-7129] Port sync in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_rom in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_ram[3] in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_ram[2] in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_ram[1] in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_ram[0] in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port clk_ph2 in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port test_pin in module cpu_4004_top is either unconnected or has no load
----------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1296.504 ; gain = 654.758
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1296.504 ; gain = 654.758
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Loading Part and Timing Information
----------------------------------------------------------------------------------
-Loading part: xc7a35ticpg236-1L
----------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xc7a35ticpg236-1L
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1296.504 ; gain = 654.758
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1296.504 ; gain = 654.758
----------------------------------------------------------------------------------
-No constraint files found.
----------------------------------------------------------------------------------
-Start RTL Component Statistics 
----------------------------------------------------------------------------------
-Detailed RTL Component Info : 
-+---Registers : 
-	                4 Bit    Registers := 1     
-	                1 Bit    Registers := 126   
-+---Muxes : 
-	   4 Input   12 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 1     
-	   4 Input    4 Bit        Muxes := 1     
-	   2 Input    4 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 26    
----------------------------------------------------------------------------------
-Finished RTL Component Statistics 
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Part Resource Summary
----------------------------------------------------------------------------------
-Part Resources:
-DSPs: 90 (col length:60)
-BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
----------------------------------------------------------------------------------
-Finished Part Resource Summary
----------------------------------------------------------------------------------
-No constraint files found.
----------------------------------------------------------------------------------
-Start Cross Boundary and Area Optimization
----------------------------------------------------------------------------------
-WARNING: [Synth 8-7129] Port sync in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_rom in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_ram[3] in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_ram[2] in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_ram[1] in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port cm_ram[0] in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port clk_ph2 in module cpu_4004_top is either unconnected or has no load
-WARNING: [Synth 8-7129] Port test_pin in module cpu_4004_top is either unconnected or has no load
----------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:22 . Memory (MB): peak = 1471.094 ; gain = 829.348
----------------------------------------------------------------------------------
-No constraint files found.
----------------------------------------------------------------------------------
-Start Timing Optimization
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:22 . Memory (MB): peak = 1486.914 ; gain = 845.168
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Technology Mapping
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:22 . Memory (MB): peak = 1486.914 ; gain = 845.168
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 1719.840 ; gain = 1078.094
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Instances
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 1719.840 ; gain = 1078.094
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Rebuilding User Hierarchy
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 1719.840 ; gain = 1078.094
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Ports
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 1719.840 ; gain = 1078.094
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Handling Custom Attributes
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 1719.840 ; gain = 1078.094
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Nets
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 1719.840 ; gain = 1078.094
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Writing Synthesis Report
----------------------------------------------------------------------------------
-
-Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
-
-Report Cell Usage: 
-+------+------+------+
-|      |Cell  |Count |
-+------+------+------+
-|1     |OBUFT |     6|
-+------+------+------+
-
-Report Instance Areas: 
-+------+---------+-------+------+
-|      |Instance |Module |Cells |
-+------+---------+-------+------+
-|1     |top      |       |     6|
-+------+---------+-------+------+
----------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 1719.840 ; gain = 1078.094
----------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 23 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 1719.840 ; gain = 1078.094
-Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 1719.840 ; gain = 1078.094
-INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1734.922 ; gain = 0.000
-INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1842.199 ; gain = 0.000
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
-Synth Design complete | Checksum: cff8c937
-INFO: [Common 17-83] Releasing license: Synthesis
-70 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
-synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:33 . Memory (MB): peak = 1842.199 ; gain = 1206.320
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1842.199 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1/cpu_4004_top.dcp' has been generated.
-INFO: [Vivado 12-24828] Executing command : report_utilization -file cpu_4004_top_utilization_synth.rpt -pb cpu_4004_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu May 14 10:41:11 2026...
+2 Infos, 0 Warnings, 0 Critical Warnings and 1 Errors encountered.
+synth_design failed
+ERROR: [Common 17-1293] The path 'X:/intel_4004/intel_4004.cache/wt' already exists, is a directory, but is not writable.
+INFO: [Common 17-206] Exiting Vivado at Thu May 14 18:31:36 2026...

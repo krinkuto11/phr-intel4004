@@ -25,27 +25,42 @@
 --       Durante M1 la ROM determina el nibble alto; en M2 el bajo.
 --       El CPU distingue M1 de M2 mediante load_ir_high/load_ir_low.
 --
--- Programa de ejemplo: suma acumulativa con loop
+-- Programa de validación lineal (sin saltos).
+-- Ejercita cada instrucción implementada con resultados predecibles.
+-- Verificar en waveform en flanco X3 (t_state="111").
 --
---   Addr  Opcode  Mnemónico         Descripción
---   ────  ──────  ─────────         ───────────────────────────
---   000   D0      LDM  0            ACC ← 0
---   001   F1      CLC               carry ← 0
---   002   B0      XCH  R0           R0 ← 0  (contador)
---   003   D5      LDM  5            ACC ← 5
---   004   B2      XCH  R2           R2 ← 5  (límite)
---   005   D1      LDM  1            ACC ← 1
---   006   B4      XCH  R4           R4 ← 1  (incremento)
---   -- Bucle en 0x007
---   007   A4      LD   R4           ACC ← R4
---   008   60      INC  R0           R0 ← R0 + 1
---   009   A0      LD   R0           ACC ← R0
---   00A   92      SUB  R2           ACC ← ACC - R2
---   00B   1A      JCN  cond=A       salta si ACC != 0 (cond 1010)
---   00C   07        → 0x007         dirección del bucle
---   00D   F0      CLB               limpia ACC y carry
---   00E   40      JUN               salto incondicional
---   00F   00        → 0x000         vuelve al inicio
+-- Addr  Hex   Mnemónico   ACC  CY  Qué valida
+-- ────  ────  ──────────  ───  ──  ──────────────────────────
+-- 000   D5    LDM 5        5   0   LDM
+-- 001   B0    XCH R0       0   0   XCH (R0←5, ACC←0)
+-- 002   D3    LDM 3        3   0   LDM
+-- 003   B2    XCH R2       0   0   XCH (R2←3, ACC←0)
+-- 004   A0    LD  R0       5   0   LD
+-- 005   82    ADD R2       8   0   ADD (5+3=8, CY=0)
+-- 006   DF    LDM 15       F   0   LDM
+-- 007   82    ADD R2       2   1   ADD overflow (F+3=2, CY=1)
+-- 008   A0    LD  R0       5   1   LD
+-- 009   92    SUB R2       2   1   SUB (5+NOT3+1=2, CY=1)
+-- 00A   F1    CLC          2   0   CLC
+-- 00B   DF    LDM 15       F   0   LDM
+-- 00C   F2    IAC          0   1   IAC overflow (F+1=0, CY=1)
+-- 00D   D0    LDM 0        0   1   LDM
+-- 00E   F8    DAC          F   0   DAC borrow (0-1=F, CY=0)
+-- 00F   F3    CMC          F   1   CMC (NOT 0 = 1)
+-- 010   D5    LDM 5        5   1   LDM
+-- 011   F4    CMA          A   1   CMA (NOT 0101=1010)
+-- 012   F0    CLB          0   0   CLB (ACC=0, CY=0)
+-- 013   FA    STC          0   1   STC
+-- 014   F7    TCC          1   0   TCC (ACC←CY=1, CY←0)
+-- 015   F5    RAL          2   0   RAL (0001→0010, CY=0)
+-- 016   F5    RAL          4   0   RAL (0010→0100, CY=0)
+-- 017   F6    RAR          2   0   RAR (0100→0010, CY=0)
+-- 018   D8    LDM 8        8   0   LDM (8=1000b)
+-- 019   F5    RAL          0   1   RAL (1000→0000, CY=1)
+-- 01A   F6    RAR          8   0   RAR (CY=1,0000→1000, CY=0)
+-- 01B   A0    LD  R0       5   0   LD final
+-- 01C   00    NOP          5   0   NOP
+-- 01D   00    NOP          5   0   fin del programa
 -- ----------------------------------------------------------
 
 library IEEE;
@@ -66,39 +81,47 @@ architecture Behavioral of ROM is
     type rom_t is array(0 to 4095) of std_logic_vector(7 downto 0);
 
     constant ROM_DATA : rom_t := (
-        16#000# => x"D0",   -- LDM 0        ACC ← 0
-        16#001# => x"F1",   -- CLC          carry ← 0
-        16#002# => x"B0",   -- XCH R0       R0 ← 0
-        16#003# => x"D5",   -- LDM 5        ACC ← 5
-        16#004# => x"B2",   -- XCH R2       R2 ← 5 (límite)
-        16#005# => x"D1",   -- LDM 1        ACC ← 1
-        16#006# => x"B4",   -- XCH R4       R4 ← 1 (incremento)
-
-        -- Bucle en 0x007
-        16#007# => x"A4",   -- LD  R4       ACC ← R4
-        16#008# => x"60",   -- INC R0       R0 ← R0 + 1
-        16#009# => x"A0",   -- LD  R0       ACC ← R0
-        16#00A# => x"92",   -- SUB R2       ACC ← ACC - R2
-        16#00B# => x"1A",   -- JCN cond=A   salta si ACC != 0
-        16#00C# => x"07",   --   → 0x007
-        16#00D# => x"F0",   -- CLB          limpia ACC y carry
-        16#00E# => x"40",   -- JUN
-        16#00F# => x"00",   --   → 0x000    vuelve al inicio
+        -- Programa de validación (30 instrucciones lineales)
+        16#000# => x"D5",   -- LDM 5
+        16#001# => x"B0",   -- XCH R0
+        16#002# => x"D3",   -- LDM 3
+        16#003# => x"B2",   -- XCH R2
+        16#004# => x"A0",   -- LD  R0
+        16#005# => x"82",   -- ADD R2
+        16#006# => x"DF",   -- LDM 15
+        16#007# => x"82",   -- ADD R2
+        16#008# => x"A0",   -- LD  R0
+        16#009# => x"92",   -- SUB R2
+        16#00A# => x"F1",   -- CLC
+        16#00B# => x"DF",   -- LDM 15
+        16#00C# => x"F2",   -- IAC
+        16#00D# => x"D0",   -- LDM 0
+        16#00E# => x"F8",   -- DAC
+        16#00F# => x"F3",   -- CMC
+        16#010# => x"D5",   -- LDM 5
+        16#011# => x"F4",   -- CMA
+        16#012# => x"F0",   -- CLB
+        16#013# => x"FA",   -- STC
+        16#014# => x"F7",   -- TCC
+        16#015# => x"F5",   -- RAL
+        16#016# => x"F5",   -- RAL
+        16#017# => x"F6",   -- RAR
+        16#018# => x"D8",   -- LDM 8
+        16#019# => x"F5",   -- RAL
+        16#01A# => x"F6",   -- RAR
+        16#01B# => x"A0",   -- LD  R0
+        16#01C# => x"00",   -- NOP
+        16#01D# => x"00",   -- NOP
 
         others  => x"00"    -- NOP (posiciones no usadas)
     );
 
-    -- Registro interno de la dirección de 12 bits
-    -- Latcheada nibble a nibble durante A1, A2, A3
-    signal addr_reg  : std_logic_vector(11 downto 0) := (others => '0');
-
-    -- Registro del byte de instrucción (latencia 1 ciclo desde A3→M1)
-    signal data_reg  : std_logic_vector(7 downto 0) := (others => '0');
-
-    -- Flag interno para saber si estamos en M1 o M2
-    -- Se usa para serializar la salida en dos nibbles
-    signal out_high  : std_logic := '0';  -- '1' → M1 (nibble alto)
-    signal out_low   : std_logic := '0';  -- '1' → M2 (nibble bajo)
+    signal addr_reg       : std_logic_vector(11 downto 0) := (others => '0');
+    signal data_reg       : std_logic_vector(7 downto 0)  := (others => '0');
+    signal out_high       : std_logic := '0';
+    signal out_low        : std_logic := '0';
+    -- send_low_next: emitir nibble bajo en el ciclo siguiente al que se activa out_high
+    signal send_low_next  : std_logic := '0';
 
 begin
 
@@ -108,8 +131,10 @@ begin
     SYNC_ROM : process(clk)
     begin
         if rising_edge(clk) then
-            out_high <= '0';
-            out_low  <= '0';
+            -- Defaults: apagar salidas y pipeline
+            out_high      <= '0';
+            out_low       <= send_low_next;  -- propagar el flag del ciclo anterior
+            send_low_next <= '0';
 
             if cm_rom = '1' then
                 case fase is
@@ -119,16 +144,13 @@ begin
                     when "01" =>  -- A2: captura nibble medio de dirección
                         addr_reg(7 downto 4) <= bus_io;
 
-                    when "10" =>  -- A3: captura nibble bajo + decodifica
+                    when "10" =>  -- A3: captura nibble bajo, accede ROM
                         addr_reg(3 downto 0) <= bus_io;
-                        -- En el flanco siguiente (A3→M1) el dato estará listo
                         data_reg <= ROM_DATA(
                             TO_INTEGER(unsigned(addr_reg(11 downto 4) & bus_io))
                         );
-                        out_high <= '1';  -- El siguiente ciclo es M1
-
-                    when "11" =>  -- M2 (fase se reutiliza para segundo nibble)
-                        out_low  <= '1';
+                        out_high      <= '1';   -- M1: emite nibble alto
+                        send_low_next <= '1';   -- M2: emitirá nibble bajo
 
                     when others => null;
                 end case;

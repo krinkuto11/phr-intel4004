@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1/cpu_4004_top.tcl"
+  variable script "X:/intel_4004/intel_4004.runs/synth_1/cpu_4004_top.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,38 +56,46 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param checkpoint.writeSynthRtdsInDcp 1
 set_param general.usePosixSpawnForFork 1
-set_param chipscope.maxJobs 2
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35ticpg236-1L
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/anderregidor/intel_4004/intel_4004.cache/wt [current_project]
-set_property parent.project_path C:/Users/anderregidor/intel_4004/intel_4004.xpr [current_project]
+set_property webtalk.parent_dir X:/intel_4004/intel_4004.cache/wt [current_project]
+set_property parent.project_path X:/intel_4004/intel_4004.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/anderregidor/intel_4004/intel_4004.cache/ip [current_project]
+set_property ip_output_repo x:/intel_4004/intel_4004.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/pkg_4004.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/bus_interno_mux.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/data_bus_buffer.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/d_ff_en.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/flag_flip_flops.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/instruction_register.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_12b.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/mtx_stack.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/mtx_scratchpad.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/flipflopJK.vhd
-  C:/Users/anderregidor/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/pkg_4004.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/d_ff_en.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/registro_4b.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/accumulator.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/alu.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/bus_interno_mux.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/timing_and_control.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/data_bus_buffer.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/temp_register.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/decimal_adjust.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/flag_flip_flops.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/instruction_register.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/instruction_decoder.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/registro_12b.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/puntero_stack.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/mtx_stack.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/stack_3L.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/mtx_scratchpad.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/scratch_pad.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/flipflopJK.vhd
+  X:/intel_4004/intel_4004.srcs/sources_1/new/cpu_4004_top.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -100,7 +108,7 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 }
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/anderregidor/intel_4004/intel_4004.srcs/utils_1/imports/synth_1/cpu_4004_top.dcp
+read_checkpoint -auto_incremental -incremental X:/intel_4004/intel_4004.srcs/utils_1/imports/synth_1/cpu_4004_top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1'
+HD_PWD='X:/intel_4004/intel_4004.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
