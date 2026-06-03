@@ -1,62 +1,67 @@
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 11.05.2026 17:53:51
+-- Design Name: 
+-- Module Name: flag_flip_flops - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
+
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.pkg_4004.all;
 
--- Flag register del Intel 4004.
---
--- Bit 0 = Carry (CY)
--- Bit 1 = Test
--- Bits 2-3 = reservados
---
--- Prioridad de actualización del carry (bit 0):
---   1. force_carry_en='1'  → carry ← force_carry_val   (STC, CLC, CMC, TCC, CLB)
---   2. carry_load_en='1'   → carry ← carry_in           (aritmética: ADD, SUB, IAC, DAC, RAL, RAR)
---   3. load_en='1'         → carry ← d_in(0)            (carga genérica desde bus)
--- Los bits 1-3 se actualizan solo con load_en='1'.
-
 entity flag_flip_flops is
     Port (
-        clk            : in  STD_LOGIC;
-        reset          : in  STD_LOGIC;
-
-        load_en        : in  STD_LOGIC;
-        d_in           : in  STD_LOGIC_VECTOR(BUS_W-1 downto 0);
-
-        carry_in       : in  STD_LOGIC;
-        carry_load_en  : in  STD_LOGIC;
-
-        force_carry_en : in  STD_LOGIC;
-        force_carry_val: in  STD_LOGIC;
-
-        q_out          : out STD_LOGIC_VECTOR(BUS_W-1 downto 0)
+        clk       : in  STD_LOGIC;
+        reset     : in  STD_LOGIC;
+        
+        -- Señal de control: ¿Viene de la ALU o del Bus?
+        load_en   : in  STD_LOGIC; 
+        
+        -- Entrada de datos (puede venir del bus o de la ALU)
+        d_in      : in  STD_LOGIC_VECTOR(BUS_W-1 downto 0);
+        
+        -- Salida de los flags
+        q_out     : out STD_LOGIC_VECTOR(BUS_W-1 downto 0);
+        
+        -- Output enable for bus
+        flags_oe  : out STD_LOGIC
     );
 end flag_flip_flops;
 
-architecture Behavioral of flag_flip_flops is
-    signal flags_reg : STD_LOGIC_VECTOR(BUS_W-1 downto 0) := (others => '0');
+architecture Structural of flag_flip_flops is
+    -- No necesitamos declarar el componente si usamos 'entity work'
 begin
 
-    process(clk, reset)
-    begin
-        if reset = '1' then
-            flags_reg <= (others => '0');
-        elsif rising_edge(clk) then
-            -- Bits 1-3: solo load_en los actualiza
-            if load_en = '1' then
-                flags_reg(BUS_W-1 downto 1) <= d_in(BUS_W-1 downto 1);
-            end if;
+    -- Flags OE: enable when needed, for now always '0' (placeholder)
+    flags_oe <= '0';
 
-            -- Bit 0 (carry): prioridad force > carry_load > load_en
-            if force_carry_en = '1' then
-                flags_reg(0) <= force_carry_val;
-            elsif carry_load_en = '1' then
-                flags_reg(0) <= carry_in;
-            elsif load_en = '1' then
-                flags_reg(0) <= d_in(0);
-            end if;
-        end if;
-    end process;
+    -- Generamos los 4 biestables de estado
+    -- Bit 0 suele ser CARRY
+    -- Bit 1 suele ser TEST
+    -- Bits 2 y 3 pueden ser flags auxiliares
+    gen_flags: for i in 0 to BUS_W-1 generate
+        flag_bit: entity work.d_ff_en 
+            port map (
+                clk   => clk,
+                reset => reset,
+                en    => load_en,
+                d     => d_in(i),
+                q     => q_out(i)
+            );
+    end generate;
 
-    q_out <= flags_reg;
-
-end Behavioral;
+end Structural;

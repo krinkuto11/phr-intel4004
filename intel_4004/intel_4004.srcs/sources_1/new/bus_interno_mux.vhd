@@ -52,6 +52,7 @@ begin
     vector_peticiones <= acc_oe & tmp_reg_oe & flags_oe & alu_oe & 
                          decoder_oe & stack_oe & reg_mux_oe & ext_buf_oe;
 
+
     process(vector_peticiones, acc_out, tmp_reg_out, flags_out, alu_out, 
             decoder_out, stack_out, reg_mux_out, ext_buf_out)
     begin

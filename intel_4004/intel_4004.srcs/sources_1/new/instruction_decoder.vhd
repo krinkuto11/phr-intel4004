@@ -1,155 +1,102 @@
 ----------------------------------------------------------------------------------
--- Instruction Decoder — Intel 4004
--- Archivo: instruction_decoder.vhd
+-- Decodificador de Instrucciones del Intel 4004
 --
--- Entidad adaptadora que envuelve a decodIns y proporciona la interfaz
--- completa que necesitan cpu_4004_top y timing_and_control.
---
--- Funciones:
---   1. Divide ir_in(7:4) → entrada1 y ir_in(3:0) → entrada2
---   2. Genera inst_group (16-bit one-hot) para timing_and_control
---   3. Registra current_frag (síncrono): '0'=primer ciclo, '1'=segundo ciclo
---   4. Genera disable_ir: inhibe carga del IR durante el segundo ciclo
---   5. Propaga scratch_addr = ir_in(3:0) al scratch pad
---   6. Genera bus_out/out_en para instrucciones con dato inmediato (LDM, BBL)
---      LDM: bus_out = ir_in(3:0) (dato inmediato de 4 bits)
---      BBL: bus_out = ir_in(3:0) (dato que se carga al volver de subrutina)
---
--- Protocolo de current_frag:
---   - Se pone a '1' en el flanco de reloj de X3 cuando ciclo='1'
---     (la instrucción necesita una segunda palabra de ROM)
---   - Se pone a '0' al inicio del ciclo siguiente (tras capturar la 2ª palabra)
---
--- Nota: el 4004 implementa instrucciones de 2 palabras tomando un segundo
--- ciclo de máquina completo (A1-A3 + M1-M2 + X1-X3). Durante ese segundo
--- ciclo, el IR ya contiene la primera palabra y NO debe sobreescribirse.
--- Por eso disable_ir='1' durante el segundo ciclo fetch (current_frag='1').
+-- Descripción:
+--   Recibe el byte de instrucción (8 bits) desde el Instruction Register y
+--   genera señales de control combinacionales para la unidad Timing & Control.
+--   Mapea el nibble superior (opcode principal) a un bus One-Hot 'inst_group(15:0)'.
+--   Identifica instrucciones de 2 bytes (JUN, JMS, JCN, FIM) para habilitar
+--   su ejecución secuencial en 2 ciclos de máquina.
 ----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 use work.pkg_4004.all;
 
 entity instruction_decoder is
-    port(
-        clk           : in  STD_LOGIC;
-        reset         : in  STD_LOGIC;
-
-        -- Desde el Instruction Register (8 bits)
-        ir_in         : in  STD_LOGIC_VECTOR(7 downto 0);
-
-        -- Hacia timing_and_control
-        inst_group    : out STD_LOGIC_VECTOR(15 downto 0); -- one-hot de instrucción
-        current_frag  : out STD_LOGIC;                     -- 0=ciclo1, 1=ciclo2
-        disable_ir    : out STD_LOGIC;                     -- inhibir carga del IR
-
-        -- Hacia el bus interno: datos inmediatos (LDM, BBL)
-        bus_out       : out STD_LOGIC_VECTOR(BUS_W-1 downto 0);
-        out_en        : out STD_LOGIC
+    Port (
+        ir_in          : in  STD_LOGIC_VECTOR(7 downto 0); -- Byte de instrucción actual
+        
+        -- Grupo de instrucciones mapeado One-Hot a Timing & Control (16 bits)
+        inst_group     : out STD_LOGIC_VECTOR(15 downto 0);
+        
+        -- Indicadores específicos de instrucción
+        is_2byte       : out STD_LOGIC;  -- Habilitación de 2 ciclos (JUN, JMS, JCN, FIM)
+        is_daa         : out STD_LOGIC;  -- Ajuste Decimal
+        is_tcs         : out STD_LOGIC;  -- Transfer Carry Subtract
+        is_rdr         : out STD_LOGIC;  -- Leer Puerto de ROM
+        is_wrr         : out STD_LOGIC;  -- Escribir Puerto de ROM
+        is_wmp         : out STD_LOGIC;  -- Escribir Puerto de RAM
+        is_clc         : out STD_LOGIC;  -- Limpiar Carry
+        is_clb         : out STD_LOGIC;  -- Limpiar Acumulador y Carry
+        is_cmc         : out STD_LOGIC;  -- Complementar Carry
+        
+        -- Salida hacia el bus interno (para cargas inmediatas: LDM, BBL)
+        bus_out        : out STD_LOGIC_VECTOR(BUS_W-1 downto 0);
+        out_en         : out STD_LOGIC
     );
 end instruction_decoder;
 
-architecture Structural of instruction_decoder is
-
-    -- --------------------------------------------------------
-    -- Componente decodIns
-    -- --------------------------------------------------------
-    component decodIns is
-        port(
-            enable        : in  std_logic;
-            entrada1      : in  std_logic_vector(3 downto 0);
-            entrada2      : in  std_logic_vector(3 downto 0);
-            salidaControl : out std_logic_vector(15 downto 0);
-            ciclo         : out std_logic;
-            extras        : out std_logic_vector(1 downto 0)
-        );
-    end component;
-
-    -- --------------------------------------------------------
-    -- Señales internas
-    -- --------------------------------------------------------
-    signal nibble_alto    : STD_LOGIC_VECTOR(3 downto 0);  -- IR[7:4]
-    signal nibble_bajo    : STD_LOGIC_VECTOR(3 downto 0);  -- IR[3:0]
-
-    signal inst_group_int : STD_LOGIC_VECTOR(15 downto 0);
-    signal ciclo_int      : STD_LOGIC;                     -- combinacional
-
-    -- Registro de ciclo: se activa al detectar instrucción de 2 palabras
-    signal frag_reg       : STD_LOGIC := '0';
-
-    -- Para detectar instrucciones con dato inmediato al bus
-    -- Bit 13 = LDM (opcode 1101), Bit 12 = BBL (opcode 1100)
-    signal es_ldm_bbl     : STD_LOGIC;
-
+architecture Combinational of instruction_decoder is
+    signal op_high : STD_LOGIC_VECTOR(3 downto 0);
+    signal op_low  : STD_LOGIC_VECTOR(3 downto 0);
 begin
 
-    -- --------------------------------------------------------
-    -- División del IR en nibbles
-    -- --------------------------------------------------------
-    nibble_alto <= ir_in(7 downto 4);
-    nibble_bajo <= ir_in(3 downto 0);
+    op_high <= ir_in(7 downto 4);
+    op_low  <= ir_in(3 downto 0);
 
-    -- --------------------------------------------------------
-    -- Instancia del decodificador principal
-    -- --------------------------------------------------------
-    U_DEC : decodIns
-        port map(
-            enable        => '1',
-            entrada1      => nibble_alto,
-            entrada2      => nibble_bajo,
-            salidaControl => inst_group_int,
-            ciclo         => ciclo_int,
-            extras        => open
-        );
-
-    -- --------------------------------------------------------
-    -- Salidas directas
-    -- --------------------------------------------------------
-    inst_group   <= inst_group_int;
-
-    -- --------------------------------------------------------
-    -- Registro síncrono de current_frag
-    --
-    -- Lógica:
-    --   - Si estamos en ciclo 1 y ciclo_int='1' → siguiente ciclo es el 2º
-    --   - Si estamos en ciclo 2 → volver a ciclo 1 (instrucción completada)
-    -- Se captura en el flanco de subida del reloj (fase X3 → A1 siguiente)
-    -- --------------------------------------------------------
-    process(clk, reset)
+    -- 1. Decodificación One-Hot del nibble alto (Opcodes 0 a 15)
+    process(op_high)
     begin
-        if reset = '1' then
-            frag_reg <= '0';
-        elsif rising_edge(clk) then
-            if frag_reg = '1' then
-                -- Acabamos de ejecutar el segundo ciclo: volver a ciclo 1
-                frag_reg <= '0';
-            elsif ciclo_int = '1' then
-                -- Primera palabra detectada como instrucción de 2 palabras
-                frag_reg <= '1';
-            end if;
-        end if;
+        inst_group <= (others => '0');
+        case op_high is
+            when "0000" => inst_group(0)  <= '1'; -- NOP y grupo 0000
+            when "0001" => inst_group(1)  <= '1'; -- JCN
+            when "0010" => inst_group(2)  <= '1'; -- FIM / SRC
+            when "0011" => inst_group(3)  <= '1'; -- FIN / OPR
+            when "0100" => inst_group(4)  <= '1'; -- JUN
+            when "0101" => inst_group(5)  <= '1'; -- JMS
+            when "0110" => inst_group(6)  <= '1'; -- INC
+            when "0111" => inst_group(7)  <= '1'; -- BBL
+            when "1000" => inst_group(8)  <= '1'; -- ADD
+            when "1001" => inst_group(9)  <= '1'; -- SUB
+            when "1010" => inst_group(10) <= '1'; -- LD
+            when "1011" => inst_group(11) <= '1'; -- XCH
+            when "1100" => inst_group(12) <= '1'; -- Sin uso / Reservado
+            when "1101" => inst_group(13) <= '1'; -- LDM
+            when "1110" => inst_group(14) <= '1'; -- E/S y RAM (WRR, RDR, WMP, etc.)
+            when "1111" => inst_group(15) <= '1'; -- Grupo de acumulador (CLB, CLC, DAA, TCS, etc.)
+            when others => null;
+        end case;
     end process;
 
-    current_frag <= frag_reg;
+    -- 2. Detección de instrucciones de 2 bytes (2 ciclos de máquina)
+    --   - JCN: 0x1X
+    --   - FIM: 0x2X cuando el último bit es '0' (0x20, 0x22, 0x24, etc.)
+    --   - JUN: 0x4X
+    --   - JMS: 0x5X
+    is_2byte <= '1' when (op_high = "0001") or 
+                         (op_high = "0100") or 
+                         (op_high = "0101") or 
+                         (op_high = "0010" and ir_in(0) = '0') 
+                   else '0';
 
-    -- --------------------------------------------------------
-    -- disable_ir: inhibe la carga del IR durante el 2º ciclo fetch
-    -- Cuando frag_reg='1', el IR no debe sobreescribirse con
-    -- la segunda palabra (que es la dirección/dato, no un opcode).
-    -- --------------------------------------------------------
-    disable_ir <= frag_reg;
+    -- 3. Decodificación de instrucciones de control de Acumulador (Grupo 15)
+    is_clb <= '1' when (op_high = "1111" and op_low = "0000") else '0'; -- CLB (Clear Accumulator and Carry)
+    is_clc <= '1' when (op_high = "1111" and op_low = "0001") else '0'; -- CLC (Clear Carry)
+    is_cmc <= '1' when (op_high = "1111" and op_low = "0011") else '0'; -- CMC (Complement Carry)
+    is_daa <= '1' when (op_high = "1111" and op_low = "1011") else '0'; -- DAA (Decimal Adjust Accumulator)
+    is_tcs <= '1' when (op_high = "1111" and op_low = "1001") else '0'; -- TCS (Transfer Carry Subtract)
 
-    -- --------------------------------------------------------
-    -- bus_out / out_en: datos inmediatos al bus interno
-    --
-    -- LDM (bit 13): carga nibble_bajo directamente al acumulador
-    -- BBL (bit 12): carga nibble_bajo al acumulador al retornar
-    --
-    -- El timing_and_control activará el OE en la fase X1
-    -- --------------------------------------------------------
-    es_ldm_bbl <= inst_group_int(13) or inst_group_int(12);
 
-    bus_out <= nibble_bajo when es_ldm_bbl = '1' else (others => '0');
-    out_en  <= es_ldm_bbl;
+    -- 4. Decodificación de instrucciones de E/S (Grupo 14)
+    is_wmp <= '1' when (op_high = "1110" and op_low = "0001") else '0'; -- WMP (Write RAM Port)
+    is_wrr <= '1' when (op_high = "1110" and op_low = "0010") else '0'; -- WRR (Write ROM Port)
+    is_rdr <= '1' when (op_high = "1110" and op_low = "1010") else '0'; -- RDR (Read ROM Port)
 
-end Structural;
+    -- 5. Carga de datos inmediatos (para LDM y BBL)
+    bus_out <= op_low;
+    out_en  <= '1' when (op_high = "1101" or op_high = "0111") else '0';
+
+end Combinational;

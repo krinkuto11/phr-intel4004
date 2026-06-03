@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='X:/intel_4004/intel_4004.runs/synth_1'
+HD_PWD='c:/Users/anderregidor/intel_4004/intel_4004.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log cpu_4004_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source cpu_4004_top.tcl
+EAStep vivado -log basys3_4004_soc.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source basys3_4004_soc.tcl

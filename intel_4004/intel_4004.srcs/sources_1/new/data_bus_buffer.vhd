@@ -16,6 +16,8 @@ begin
     -- Lectura constante hacia el interior
     internal_bus_out <= data_bus_ext;
 
-    -- Aislamiento tri-estado hacia el exterior
-    data_bus_ext <= internal_bus_in when (dir_out = '1') else (others => 'Z');
+    -- Aislamiento tri-estado hacia el exterior:
+    -- dir_out = '0' -> CPU escribe hacia afuera (PC en A1-A3, escrituras)
+    -- dir_out = '1' -> CPU se pone en alta impedancia (M1-M2, lecturas) para escuchar a la ROM/RAM
+    data_bus_ext <= internal_bus_in when (dir_out = '0') else (others => 'Z');
 end Tristate;

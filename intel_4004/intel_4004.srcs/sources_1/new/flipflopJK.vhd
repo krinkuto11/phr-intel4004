@@ -7,7 +7,7 @@ entity flipflopJK is
 end flipflopJK;
 
 architecture FlujoDatos of flipflopJK is
-signal q_aux : std_logic;
+signal q_aux : std_logic := '0';
 begin
 q <= q_aux;
 notq <= not q_aux;

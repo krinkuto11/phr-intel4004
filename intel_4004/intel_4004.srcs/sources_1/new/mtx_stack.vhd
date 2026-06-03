@@ -27,20 +27,18 @@ begin
         end if;
     end process;
 
-    -- Serialización: saca un nibble por ciclo según la fase
-    process(clk)
+    -- Serialización combinacional: saca un nibble inmediatamente según la fase
+    process(oe, fase, reg_activo)
     begin
-        if rising_edge(clk) then
-            if oe = '1' then
-                case fase is
-                    when "00" => y <= reg_activo(3  downto 0);   -- A1: nibble bajo
-                    when "01" => y <= reg_activo(7  downto 4);   -- A2: nibble medio
-                    when "10" => y <= reg_activo(11 downto 8);   -- A3: nibble alto
-                    when others => y <= (others => 'X');
-                end case;
-            else
-                y <= (others => '0');  -- bus en ceros cuando no es nuestro turno
-            end if;
+        if oe = '1' then
+            case fase is
+                when "00" => y <= reg_activo(3  downto 0);   -- A1: nibble bajo
+                when "01" => y <= reg_activo(7  downto 4);   -- A2: nibble medio
+                when "10" => y <= reg_activo(11 downto 8);   -- A3: nibble alto
+                when others => y <= (others => '0');
+            end case;
+        else
+            y <= (others => '0');  -- bus en ceros cuando no es nuestro turno
         end if;
     end process;
 
