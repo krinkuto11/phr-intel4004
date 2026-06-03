@@ -1,1 +1,4 @@
 .DS_Store
+intel_4004/intel_4004.runs/*
+intel_4004/intel_4004.cache/*
+intel_4004/intel_4004.hw/*
