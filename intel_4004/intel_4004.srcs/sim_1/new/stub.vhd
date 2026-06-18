@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Componente stub para simulación
+-- Fuente de bus falsa: vuelca un valor fijo identificable cuando se le habilita
+-- la salida. Permite probar el multiplexor del bus interno de forma aislada.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.pkg_4004.all;

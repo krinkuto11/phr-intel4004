@@ -1,3 +1,10 @@
+----------------------------------------------------------------------------------
+-- Núcleo del procesador Intel 4004 (top-level)
+-- Conecta de forma estructural todos los bloques del CPU: el datapath (ALU,
+-- acumulador, registros, scratchpad y stack) y la unidad de Timing & Control.
+-- Genera además el chip select hacia la ROM 4001 externa.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;

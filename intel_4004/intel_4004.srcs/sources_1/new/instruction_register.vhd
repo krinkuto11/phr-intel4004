@@ -1,6 +1,12 @@
+----------------------------------------------------------------------------------
+-- Registro de Instrucción (IR)
+-- Almacena el byte de instrucción de 8 bits, capturándolo en dos nibbles:
+-- la parte alta durante la fase M1 y la parte baja durante M2.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use work.pkg_4004.all; 
+use work.pkg_4004.all;
 
 entity instruction_register is
     Port (

@@ -1,14 +1,9 @@
--- =============================================================
---  Intel 4004 - Scratchpad
---  Archivo : scratch_pad.vhd
---
---  Arquitectura: Structural
---
---  16 registros de 4 bits instanciados mediante GENERATE.
---  Un multiplexor 16:1 selecciona la salida del registro activo.
---  El decodificador de enable activa solo el registro apuntado
---  por 'address' cuando w_e = '1'.
--- =============================================================
+----------------------------------------------------------------------------------
+-- Scratchpad (banco de 16 registros de 4 bits)
+-- Los 16 registros se instancian mediante GENERATE y un multiplexor 16:1 selecciona
+-- la salida del registro activo. El decodificador de enable activa sólo el registro
+-- apuntado por 'address' cuando w_e='1'. En modo par direcciona la pareja RRn de 8 bits.
+----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.NUMERIC_STD.ALL;
 

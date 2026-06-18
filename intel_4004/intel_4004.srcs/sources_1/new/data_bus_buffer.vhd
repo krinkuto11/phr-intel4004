@@ -1,3 +1,10 @@
+----------------------------------------------------------------------------------
+-- Buffer del Bus de Datos
+-- Interfaz bidireccional entre el bus interno de 4 bits y el bus externo D0-D3.
+-- La señal 'dir_out' decide si el CPU escribe hacia afuera o se pone en alta
+-- impedancia para escuchar a la ROM/RAM.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.pkg_4004.all;

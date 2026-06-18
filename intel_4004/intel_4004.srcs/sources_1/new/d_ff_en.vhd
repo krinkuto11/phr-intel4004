@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Biestable D con enable síncrono y reset asíncrono
+-- Componente básico a partir del cual se construyen todos los registros del diseño.
+-- Reset asíncrono activo a nivel alto; captura el dato sólo cuando en='1'.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.pkg_4004.all;

@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Ajuste Decimal (DAA)
+-- Lógica combinacional que decide la corrección BCD del acumulador:
+-- suma 6 si el acumulador supera 9 o si hay acarreo; en caso contrario suma 0.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;

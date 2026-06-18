@@ -1,12 +1,9 @@
 ----------------------------------------------------------------------------------
--- Decodificador de Instrucciones del Intel 4004
---
--- Descripción:
---   Recibe el byte de instrucción (8 bits) desde el Instruction Register y
---   genera señales de control combinacionales para la unidad Timing & Control.
---   Mapea el nibble superior (opcode principal) a un bus One-Hot 'inst_group(15:0)'.
---   Identifica instrucciones de 2 bytes (JUN, JMS, JCN, FIM) para habilitar
---   su ejecución secuencial en 2 ciclos de máquina.
+-- Decodificador de Instrucciones
+-- Recibe el byte de instrucción de 8 bits desde el IR y genera señales de control
+-- combinacionales para Timing & Control. Mapea el nibble alto (opcode principal) a
+-- un bus One-Hot 'inst_group(15:0)' e identifica las instrucciones de 2 bytes
+-- (JUN, JMS, JCN, FIM) para su ejecución en 2 ciclos de máquina.
 ----------------------------------------------------------------------------------
 
 library IEEE;

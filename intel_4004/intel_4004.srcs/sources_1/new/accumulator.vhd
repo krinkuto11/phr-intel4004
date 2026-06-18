@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Acumulador de 4 bits
+-- Almacena el operando A de la ALU y recibe el resultado de cada operación.
+-- Es un registro_4b con la interfaz renombrada para mayor claridad en el datapath.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

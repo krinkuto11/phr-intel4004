@@ -1,6 +1,9 @@
--- ----------------------------------------------------------
--- Intel 4001 ROM - Modelo SÍNCRONO con Soporte de E/S
--- ----------------------------------------------------------
+----------------------------------------------------------------------------------
+-- ROM 4001: modelo síncrono con puertos de E/S
+-- Memoria de programa de 4 KB que contiene la calculadora BCD en código máquina.
+-- Captura la dirección serializada en A1-A3 y entrega la instrucción en dos nibbles
+-- (M1/M2). Modela también los puertos de E/S usados por SRC, RDR y WRR.
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

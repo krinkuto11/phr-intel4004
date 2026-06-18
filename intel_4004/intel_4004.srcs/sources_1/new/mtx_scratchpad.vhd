@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Multiplexor 16:1 de nibbles para el scratchpad
+-- Recibe las salidas Q de los 16 registros de 4 bits y propaga al bus el nibble
+-- del registro apuntado por 'sel'.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -20,7 +26,7 @@ begin
 
     y <= reg_activo;
 
-    -- Selección del registro activo (igual que antes)
+    -- Multiplexor 16:1: propaga el nibble del registro apuntado por sel
     process(sel, i0, i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12,i13, i14, i15)
     begin
         if    sel = "0000" then reg_activo <= i0;

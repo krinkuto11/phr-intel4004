@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Multiplexor 4:1 de 12 bits para el stack de direcciones
+-- Selecciona el nivel de stack activo y durante A1-A3 serializa la dirección de
+-- 12 bits en tres nibbles hacia el bus D0-D3.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -16,7 +22,7 @@ architecture FlujoDatos of mtx_stack is
     signal reg_activo : std_logic_vector(11 downto 0);
 begin
 
-    -- Selección del registro activo (igual que antes)
+    -- Multiplexor 4:1: selecciona el nivel del stack indicado por el puntero de pila
     process(sel, i0, i1, i2, i3)
     begin
         if    sel = "00" then reg_activo <= i0;

@@ -1,3 +1,10 @@
+----------------------------------------------------------------------------------
+-- Puntero de pila: contador de 2 bits up/down
+-- Implementado con dos biestables JK en modo toggle (J=K=1) conectados en ripple.
+-- La entidad auxiliar clk_up_down selecciona Q o /Q del primer FF como reloj del
+-- segundo, lo que invierte el sentido del conteo sin lógica adicional.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -14,7 +21,8 @@ entity clk_up_down is
     Port(qi, notqi, up_down_select : in std_logic;
     salida : out std_logic);
 end clk_up_down;
--- Multiplexor que elige up = q y down = q_not
+-- Al contar hacia arriba, el reloj del segundo FF toma el flanco de Q del primero (q).
+-- Al contar hacia abajo, lo toma de NOT(Q) (notq). Así se invierte el sentido del ripple.
 architecture clk_add of clk_up_down is
 signal not_updown : std_logic;
 begin

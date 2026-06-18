@@ -1,3 +1,8 @@
+----------------------------------------------------------------------------------
+-- Registro de 12 bits con enable síncrono y reset asíncrono
+-- Se usa como cada uno de los niveles del stack de direcciones del PC.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

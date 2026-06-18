@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Banderas de Estado (Flag Flip-Flops)
+-- Registro de 4 bits con los flags del procesador. El bit 0 es el Carry y
+-- el bit 1 el Test; los bits 2 y 3 quedan libres.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.pkg_4004.all;

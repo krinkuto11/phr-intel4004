@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Testbench del Multiplexor del Bus Interno
+-- Comprueba que sólo la fuente habilitada conduce el bus y que una colisión
+-- entre varias salidas activas a la vez se señaliza correctamente.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.pkg_4004.all;

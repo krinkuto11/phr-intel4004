@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Unidad de Timing & Control
+-- Genera el ciclo de máquina de 8 estados (A1-A3, M1-M2, X1-X3) y, según la
+-- instrucción decodificada, activa las señales de control del datapath en cada estado.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;

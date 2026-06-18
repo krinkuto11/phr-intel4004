@@ -1,3 +1,10 @@
+----------------------------------------------------------------------------------
+-- Multiplexor del Bus Interno de 4 bits
+-- Resuelve qué bloque conduce el bus interno según sus señales de output-enable.
+-- Si dos fuentes lo habilitan a la vez, fuerza un valor de error para detectar
+-- la colisión en simulación.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.pkg_4004.all;

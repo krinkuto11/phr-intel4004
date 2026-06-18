@@ -1,7 +1,8 @@
--- =============================================================
---  Intel 4004 CPU & ROM Complete System Testbench
---  Archivo : tb_cpu_4004.vhd
--- =============================================================
+----------------------------------------------------------------------------------
+-- Testbench del sistema completo CPU + ROM
+-- Instancia el núcleo Intel 4004 junto con la ROM 4001 y genera el reloj de dos
+-- fases y el reset para simular la ejecución del programa completo.
+----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -16,7 +17,7 @@ architecture sim of tb_cpu_4004 is
     signal reset         : std_logic := '1';
     signal test_pin      : std_logic := '1'; -- Test pin inactivo (1 por defecto en 4004)
     
-    -- Bus bidireccional bidireccional
+    -- Bus de datos bidireccional D0-D3
     signal bus_io        : std_logic_vector(3 downto 0) := (others => 'Z');
     
     -- Señales de monitoreo
@@ -26,7 +27,6 @@ architecture sim of tb_cpu_4004 is
     
     constant CLK_PERIOD  : time := 100 ns; -- Reloj base del sistema
 
-    -- Señales para deducir la fase del bus y sincronizar la ROM
     -- Señales para deducir la fase del bus y sincronizar la ROM
     signal t_state       : unsigned(2 downto 0) := "000";
     signal rom_fase      : std_logic_vector(1 downto 0);

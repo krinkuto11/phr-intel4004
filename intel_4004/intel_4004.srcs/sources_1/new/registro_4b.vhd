@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Registro de 4 bits con enable síncrono y reset asíncrono
+-- Instancia cuatro d_ff_en en paralelo. Es la base del acumulador, del registro
+-- temporal y de cada celda del scratchpad.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

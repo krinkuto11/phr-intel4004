@@ -1,3 +1,10 @@
+----------------------------------------------------------------------------------
+-- Unidad Aritmético-Lógica (ALU)
+-- Operaciones combinacionales sobre dos operandos de 4 bits: suma, resta
+-- (A + not(B) + carry, al estilo del 4004), AND, OR, XOR, paso de A e incremento.
+-- Entrega el resultado junto con los flags de acarreo y de cero.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;

@@ -1,3 +1,10 @@
+----------------------------------------------------------------------------------
+-- Stack de Direcciones de 3 niveles
+-- Pila del contador de programa: cuatro registros de 12 bits (PC activo más 3
+-- niveles de retorno) seleccionados por el puntero de pila. Serializa el PC
+-- hacia el bus externo durante las fases de dirección A1-A3.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

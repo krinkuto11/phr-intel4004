@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Registro temporal de 4 bits
+-- Almacena el operando B antes de que la ALU ejecute la operación. En XCH también
+-- guarda momentáneamente el valor del scratchpad durante el intercambio.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

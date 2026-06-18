@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------
+-- Biestable JK con reset asíncrono activo alto
+-- Tabla de verdad: J=0,K=1 -> Reset | J=1,K=0 -> Set | J=1,K=1 -> Toggle | J=0,K=0 -> Sin cambio.
+-- Se usa en el puntero de pila como contador de 2 bits conectando los FF en ripple.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 entity flipflopJK is

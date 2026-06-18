@@ -1,6 +1,9 @@
--- =============================================================
---  SoC Wrapper para la Placa Digilent Basys 3
--- =============================================================
+----------------------------------------------------------------------------------
+-- SoC envolvente para la placa Digilent Basys 3
+-- Integra el núcleo Intel 4004 con la ROM 4001, genera el reloj de dos fases no
+-- solapadas a partir del de 100 MHz, debouncea el botón de reset y controla el
+-- display de 7 segmentos donde se muestran operandos, operador y resultado.
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
