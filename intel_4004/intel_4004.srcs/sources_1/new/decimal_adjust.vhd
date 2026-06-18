@@ -14,6 +14,7 @@ architecture Combinational of decimal_adjust is
 begin
     process(acc_in, carry_in)
     begin
+        -- Hay carry o el acumulador > 9
         if (carry_in = '1' or unsigned(acc_in) > 9) then
             adj_out <= "0110";
         else

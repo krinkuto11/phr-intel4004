@@ -20,5 +20,5 @@ package pkg_4004 is
 end package pkg_4004;
 
 package body pkg_4004 is
-    -- Vacio por ahora, aqui irian las implementaciones de subprogramas si las hubiera
+    -- Vacío por ahora; aquí irían las implementaciones de subprogramas si las hubiera
 end package body pkg_4004;

@@ -14,7 +14,7 @@ entity clk_up_down is
     Port(qi, notqi, up_down_select : in std_logic;
     salida : out std_logic);
 end clk_up_down;
---multiplexor que elige up = q y down = q_not
+-- Multiplexor que elige up = q y down = q_not
 architecture clk_add of clk_up_down is
 signal not_updown : std_logic;
 begin

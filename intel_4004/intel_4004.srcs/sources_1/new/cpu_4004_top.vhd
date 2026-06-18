@@ -343,9 +343,7 @@ begin
         load_high   => load_ir_high,
         load_low    => load_ir_low,
         bus_in      => cable_bus_interno,
-        instr_out   => cable_ir_out_8bit,
-        decoder_out => open, -- Conectado al Decoder en el esquema
-        decoder_oe  => open  -- Controlado por el Decoder
+        instr_out   => cable_ir_out_8bit
     );
 
     -- =======================================================
@@ -380,7 +378,7 @@ begin
     end process;
 
     -- =======================================================
-    -- LÓGICA DE CAPTURA DEL SEGUNDO BYTE E EVALUACIÓN DE JCN
+    -- LÓGICA DE CAPTURA DEL SEGUNDO BYTE Y EVALUACIÓN DE JCN
     -- =======================================================
     process(clk_ph1, reset)
     begin

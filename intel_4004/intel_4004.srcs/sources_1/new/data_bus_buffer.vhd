@@ -6,7 +6,7 @@ entity data_bus_buffer is
     Port (
         internal_bus_in  : in  STD_LOGIC_VECTOR(BUS_W-1 downto 0);
         internal_bus_out : out STD_LOGIC_VECTOR(BUS_W-1 downto 0);
-        dir_out          : in  STD_LOGIC; -- '1'=Sacar datos, '0'=Leer datos
+        dir_out          : in  STD_LOGIC; -- '0'=CPU escribe al exterior, '1'=alta impedancia (escucha ROM)
         data_bus_ext     : inout STD_LOGIC_VECTOR(BUS_W-1 downto 0)
     );
 end data_bus_buffer;

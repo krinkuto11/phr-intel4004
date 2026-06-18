@@ -70,6 +70,7 @@ begin
     en_reg1 <= E_s when sel_sp = "01" else '0';
     en_reg2 <= E_s when sel_sp = "10" else '0';
     en_reg3 <= E_s when sel_sp = "11" else '0';
+    -- Nivel 0
     REG0 : registro_12b
         port map (
             clk   => Clk_s,
