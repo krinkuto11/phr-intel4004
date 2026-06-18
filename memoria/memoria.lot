@@ -1,0 +1,30 @@
+\babel@toc {spanish}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Puertos de la entidad \texttt {d\_ff\_en}}}{7}{table.caption.5}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Puertos del \texttt {registro\_4b} (análogos en \texttt {registro\_12b})}}{8}{table.caption.6}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Puertos de la entidad \texttt {flipflopJK}}}{8}{table.caption.7}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Puertos de la entidad \texttt {accumulator}}}{9}{table.caption.8}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Puertos de la entidad \texttt {instruction\_register}}}{10}{table.caption.9}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Puertos de la entidad \texttt {flag\_flip\_flops}}}{11}{table.caption.10}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Puertos de la entidad \texttt {alu}}}{11}{table.caption.11}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Operaciones de la \acrshort {alu}}}{12}{table.caption.12}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Puertos de la entidad \texttt {decimal\_adjust}}}{12}{table.caption.13}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Puertos de la entidad \texttt {scratch\_pad}}}{13}{table.caption.14}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Puertos de la entidad \texttt {stack\_3L}}}{14}{table.caption.15}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Fuentes del \texttt {bus\_interno\_mux} (cada una con su señal \texttt {\_oe})}}{15}{table.caption.18}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces Puertos de la entidad \texttt {data\_bus\_buffer}}}{16}{table.caption.19}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces Puertos de la entidad \texttt {instruction\_decoder} conectados en \texttt {cpu\_4004\_top}}}{17}{table.caption.20}%
+\contentsline {table}{\numberline {4.15}{\ignorespaces Fases del ciclo de máquina y función de cada una}}{18}{table.caption.21}%
+\contentsline {table}{\numberline {4.16}{\ignorespaces Puertos de la entidad \texttt {ROM}}}{19}{table.caption.22}%
+\contentsline {table}{\numberline {4.17}{\ignorespaces Puertos de la entidad \texttt {basys3\_4004\_soc}}}{21}{table.caption.23}%
+\contentsline {table}{\numberline {4.18}{\ignorespaces Funcionalidad no implementada respecto a la especificación original}}{21}{table.caption.24}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Ficheros fuente \acrshort {vhdl} del proyecto}}{26}{table.caption.25}%
+\contentsfinish 
+\contentsfinish 

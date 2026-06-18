@@ -358,14 +358,6 @@ begin
         ir_in       => cable_ir_out_8bit,
         inst_group  => cable_inst_group,
         is_2byte    => cable_is_2byte,
-        is_daa      => open,
-        is_tcs      => open,
-        is_rdr      => open,
-        is_wrr      => open,
-        is_wmp      => open,
-        is_clc      => open,
-        is_clb      => open,
-        is_cmc      => open,
         bus_out     => cable_decoder_out,
         out_en      => cable_decoder_oe
     );
@@ -492,19 +484,5 @@ begin
     cable_scratch_pad_out <= 
         scratch_data_out(7 downto 4) when (ctrl_scratch_pair = '1' and cable_t_state = "101") else -- X1: envía R4
         scratch_data_out(3 downto 0); -- Otros estados y X2: envía R5
-
-    -- =======================================================
-    -- TIMING AND CONTROL
-    -- =======================================================
-    -- inst_timing_and_control: entity work.timing_and_control
-    -- port map(
-    --     clk_ph1     => clk_ph1,
-    --     clk_ph2     => clk_ph2,
-    --     sync        => sync,
-    --     reset       => reset,
-    --     test_pin    => test_pin,
-    --     cm_rom      => cm_rom,
-    --     cm_ram      => cm_ram
-    -- );
 
 end Structural;

@@ -1,0 +1,9 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'memoria.blg'
+[33] biber-darwin:342> INFO - === Thu Jun 18, 2026, 11:32:14
+[40] Biber.pm:421> INFO - Reading 'memoria.bcf'
+[77] Biber.pm:1002> INFO - Found 0 citekeys in bib section 0
+[83] bbl.pm:676> INFO - Writing 'memoria.bbl' with encoding 'UTF-8'
+[84] bbl.pm:779> INFO - Output to memoria.bbl
+[84] Biber.pm:132> WARN - The file 'memoria.bcf' does not contain any citations!
+[84] Biber.pm:134> INFO - WARNINGS: 1

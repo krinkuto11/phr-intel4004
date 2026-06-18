@@ -23,15 +23,7 @@ entity instruction_decoder is
         
         -- Indicadores específicos de instrucción
         is_2byte       : out STD_LOGIC;  -- Habilitación de 2 ciclos (JUN, JMS, JCN, FIM)
-        is_daa         : out STD_LOGIC;  -- Ajuste Decimal
-        is_tcs         : out STD_LOGIC;  -- Transfer Carry Subtract
-        is_rdr         : out STD_LOGIC;  -- Leer Puerto de ROM
-        is_wrr         : out STD_LOGIC;  -- Escribir Puerto de ROM
-        is_wmp         : out STD_LOGIC;  -- Escribir Puerto de RAM
-        is_clc         : out STD_LOGIC;  -- Limpiar Carry
-        is_clb         : out STD_LOGIC;  -- Limpiar Acumulador y Carry
-        is_cmc         : out STD_LOGIC;  -- Complementar Carry
-        
+
         -- Salida hacia el bus interno (para cargas inmediatas: LDM, BBL)
         bus_out        : out STD_LOGIC_VECTOR(BUS_W-1 downto 0);
         out_en         : out STD_LOGIC
@@ -82,20 +74,7 @@ begin
                          (op_high = "0010" and ir_in(0) = '0') 
                    else '0';
 
-    -- 3. Decodificación de instrucciones de control de Acumulador (Grupo 15)
-    is_clb <= '1' when (op_high = "1111" and op_low = "0000") else '0'; -- CLB (Clear Accumulator and Carry)
-    is_clc <= '1' when (op_high = "1111" and op_low = "0001") else '0'; -- CLC (Clear Carry)
-    is_cmc <= '1' when (op_high = "1111" and op_low = "0011") else '0'; -- CMC (Complement Carry)
-    is_daa <= '1' when (op_high = "1111" and op_low = "1011") else '0'; -- DAA (Decimal Adjust Accumulator)
-    is_tcs <= '1' when (op_high = "1111" and op_low = "1001") else '0'; -- TCS (Transfer Carry Subtract)
-
-
-    -- 4. Decodificación de instrucciones de E/S (Grupo 14)
-    is_wmp <= '1' when (op_high = "1110" and op_low = "0001") else '0'; -- WMP (Write RAM Port)
-    is_wrr <= '1' when (op_high = "1110" and op_low = "0010") else '0'; -- WRR (Write ROM Port)
-    is_rdr <= '1' when (op_high = "1110" and op_low = "1010") else '0'; -- RDR (Read ROM Port)
-
-    -- 5. Carga de datos inmediatos (para LDM y BBL)
+    -- 3. Carga de datos inmediatos (para LDM y BBL)
     bus_out <= op_low;
     out_en  <= '1' when (op_high = "1101" or op_high = "0111") else '0';
 
