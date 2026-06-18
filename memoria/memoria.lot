@@ -20,14 +20,14 @@
 \contentsline {table}{\numberline {4.15}{\ignorespaces Fases del ciclo de máquina y función de cada una}}{18}{table.caption.21}%
 \contentsline {table}{\numberline {4.16}{\ignorespaces Puertos de la entidad \texttt {ROM}}}{19}{table.caption.22}%
 \contentsline {table}{\numberline {4.17}{\ignorespaces Puertos de la entidad \texttt {basys3\_4004\_soc}}}{21}{table.caption.23}%
-\contentsline {table}{\numberline {4.18}{\ignorespaces Traza ciclo a ciclo de \texttt {ADD R1} (ACC=3, R1=5, C=0)}}{23}{table.caption.24}%
-\contentsline {table}{\numberline {4.19}{\ignorespaces Traza de \texttt {JCN Z, 0x2A} --- ciclo 1 (fetch del opcode)}}{24}{table.caption.25}%
-\contentsline {table}{\numberline {4.20}{\ignorespaces Traza de \texttt {JCN Z, 0x2A} --- ciclo 2 (segundo byte y resolución del salto)}}{25}{table.caption.26}%
-\contentsline {table}{\numberline {4.21}{\ignorespaces Funcionalidad no implementada respecto a la especificación original}}{26}{table.caption.27}%
+\contentsline {table}{\numberline {4.18}{\ignorespaces Traza ciclo a ciclo de \texttt {ADD R1} (ACC=3, R1=5, C=0)}}{21}{table.4.18}%
+\contentsline {table}{\numberline {4.19}{\ignorespaces Traza de \texttt {JCN Z, 0x2A} --- ciclo 1 (fetch del opcode)}}{23}{table.4.19}%
+\contentsline {table}{\numberline {4.20}{\ignorespaces Traza de \texttt {JCN Z, 0x2A} --- ciclo 2 (segundo byte y resolución del salto)}}{23}{table.4.20}%
+\contentsline {table}{\numberline {4.21}{\ignorespaces Funcionalidad no implementada respecto a la especificación original}}{25}{table.caption.24}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Ficheros fuente \acrshort {vhdl} del proyecto}}{31}{table.caption.28}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Ficheros fuente \acrshort {vhdl} del proyecto}}{30}{table.caption.25}%
 \contentsfinish 
 \contentsfinish 

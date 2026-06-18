@@ -1,7 +1,5 @@
 -- =============================================================
 --  SoC Wrapper para la Placa Digilent Basys 3
---  Proyecto : Calculadora BCD con Intel 4004
---  Archivo  : basys3_4004_soc.vhd
 -- =============================================================
 
 library IEEE;

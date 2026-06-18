@@ -37,15 +37,15 @@
 \contentsline {subsection}{\numberline {4.8.1}ROM de programa: modelo del chip 4001}{19}{subsection.4.8.1}%
 \contentsline {subsection}{\numberline {4.8.2}Sistema en chip para la Basys~3}{20}{subsection.4.8.2}%
 \contentsline {section}{\numberline {4.9}Traza de ejecución de instrucciones representativas}{21}{section.4.9}%
-\contentsline {subsection}{\numberline {4.9.1}ADD R1 --- instrucción aritmética de un ciclo}{22}{subsection.4.9.1}%
-\contentsline {subsection}{\numberline {4.9.2}JCN --- salto condicional de dos ciclos}{24}{subsection.4.9.2}%
-\contentsline {section}{\numberline {4.10}Limitaciones respecto a la especificación}{26}{section.4.10}%
-\contentsline {chapter}{\numberline {5}Verificación}{27}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Testbench del multiplexor de bus interno}{27}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Testbench del sistema completo}{27}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Implementación}{28}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusiones}{29}{chapter.7}%
-\contentsline {chapter}{\numberline {A}Listado de ficheros del proyecto}{30}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {4.9.1}ADD R1 --- instrucción aritmética de un ciclo}{21}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}JCN --- salto condicional de dos ciclos}{23}{subsection.4.9.2}%
+\contentsline {section}{\numberline {4.10}Limitaciones respecto a la especificación}{25}{section.4.10}%
+\contentsline {chapter}{\numberline {5}Verificación}{26}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Testbench del multiplexor de bus interno}{26}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Testbench del sistema completo}{26}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Implementación}{27}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusiones}{28}{chapter.7}%
+\contentsline {chapter}{\numberline {A}Listado de ficheros del proyecto}{29}{appendix.Alph1}%
 \contentsfinish 
-\contentsline {section}{Glosario}{32}{section*.30}%
-\contentsline {section}{Siglas}{32}{section*.31}%
+\contentsline {section}{Glosario}{31}{section*.27}%
+\contentsline {section}{Siglas}{31}{section*.28}%

@@ -121,8 +121,6 @@ architecture Structural of cpu_4004_top is
     signal load_ir_low           : STD_LOGIC := '0';
     signal fase_reloj            : STD_LOGIC_VECTOR(1 downto 0) := "00";
     signal cable_t_state         : STD_LOGIC_VECTOR(2 downto 0);
-    
-    -- Señales pendientes del futuro Instruction Decoder
     signal cable_inst_group      : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
     signal cable_current_frag    : STD_LOGIC := '0';
     signal cable_disable_ir      : STD_LOGIC := '0';
@@ -132,7 +130,7 @@ architecture Structural of cpu_4004_top is
     -- =======================================================
     -- La ROM 4001 es un componente EXTERNO conectado al bus D0-D3.
     -- El CPU sólo genera cm_rom (chip select) para seleccionarla.
-    -- La instancia de la ROM va en el testbench, no aquí.
+    -- La instancia de la ROM va en el basys3_soc.
     signal ctrl_cm_rom           : STD_LOGIC := '0';
     signal cable_pc_out          : STD_LOGIC_VECTOR(11 downto 0);
     signal cable_is_2byte        : STD_LOGIC;
