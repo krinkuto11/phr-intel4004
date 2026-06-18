@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.14)  18 JUN 2026 12:08
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.14)  18 JUN 2026 12:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1632,13 +1632,12 @@ Overfull \hbox (22.85207pt too wide) in paragraph at lines 19--19
 ceCodePro(0)/m/n/12 cpu_4004_top[][] [][]  
  []
 
-)
+[3
+
+])
 \tf@lot=\write9
 \openout9 = `memoria.lot'.
 
- [3
-
-]
 LaTeX Info: Redefining \. on input line 81.
 LaTeX Info: Redefining \% on input line 81.
  [4] (./memoria.lol)
@@ -1756,7 +1755,339 @@ tiplexa los cuatro dígitos a $\OMS/cmsy/m/n/12 ^^Y$\TU/SourceSerif4(0)/b/n/12 2
 LaTeX Info: Redefining \. on input line 915.
 LaTeX Info: Redefining \% on input line 915.
 [20]
-Underfull \hbox (badness 5817) in paragraph at lines 951--951
+Overfull \hbox (9.06683pt too wide) in paragraph at lines 921--927
+\TU/SourceSerif4(0)/b/n/12 ción dos instrucciones representativas extraídas del
+ programa de la calculadora: \TU/SourceCodePro(0)/b/n/12 ADD R1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+[]|\TU/SourceSerif4(0)/b/n/12 La pila serializa
+ []
+
+
+Underfull \hbox (badness 2941) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 PC[3:0] al bus D0–
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 La ROM latcha
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 el nibble bajo
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 de la dirección
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+[]|\TU/SourceSerif4(0)/b/n/12 La pila serializa
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+[]|\TU/SourceSerif4(0)/b/n/12 La pila serializa
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 PC[11:8]; chip se-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 lect activado. La
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 ROM ensambla la
+ []
+
+
+Underfull \hbox (badness 2990) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 dirección completa
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 y lee la instruc-
+ []
+
+
+Underfull \hbox (badness 4621) in paragraph at lines 988--988
+[]|\TU/SourceSerif4(0)/b/n/12 La ROM vuelca el
+ []
+
+
+Underfull \hbox (badness 5939) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 terno lo introduce
+ []
+
+
+Underfull \hbox (badness 4621) in paragraph at lines 988--988
+[]|\TU/SourceSerif4(0)/b/n/12 La ROM vuelca el
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 al bus. IR[3:0] $\OMS/cmsy/m/n/12  $
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceCodePro(0)/b/n/12 "0001"\TU/SourceSerif4(0)/b/n/12 . El deco-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 dificador activa
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceCodePro(0)/b/n/12 inst_group(8)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 (grupo ADD) e
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+[]|\TU/SourceSerif4(0)/b/n/12 El scratchpad se-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 IR[3:0] = \TU/SourceCodePro(0)/b/n/12 "0001"\TU/Sour
+ceSerif4(0)/b/n/12 )
+ []
+
+
+Underfull \hbox (badness 5939) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 al bus interno. El
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 registro temporal
+ []
+
+
+Underfull \hbox (badness 4084) in paragraph at lines 988--988
+\OT1/cmr/m/n/12 5 + 0 = 8$ \TU/SourceSerif4(0)/b/n/12 con
+ []
+
+
+Underfull \hbox (badness 5519) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 C). El resultado \TU/SourceCodePro(0)/b/n/12 8
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 terno. El acumula-
+ []
+
+
+Overfull \hbox (7.79994pt too wide) in paragraph at lines 988--988
+[]|\TU/SourceCodePro(0)/b/n/12 current_frag='0'
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 y
+ []
+
+
+Overfull \hbox (45.59995pt too wide) in paragraph at lines 988--988
+\TU/SourceCodePro(0)/b/n/12 jump_taken_active='0'\TU/SourceSerif4(0)/b/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 por lo que
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceCodePro(0)/b/n/12 stack_in =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceCodePro(0)/b/n/12 PC+1\TU/SourceSerif4(0)/b/n/12 . La pila ac-
+ []
+
+
+Underfull \hbox (badness 2922) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 tualiza el contador
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--988
+\TU/SourceSerif4(0)/b/n/12 de programa al
+ []
+
+LaTeX Info: Redefining \. on input line 990.
+LaTeX Info: Redefining \% on input line 990.
+[21]
+LaTeX Info: Redefining \. on input line 990.
+LaTeX Info: Redefining \% on input line 990.
+ [22]
+Overfull \vbox (499.58255pt too high) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 990.
+LaTeX Info: Redefining \% on input line 990.
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1039
+[]|\TU/SourceCodePro(0)/b/n/12 current_frag='0'\TU/SourceSerif4(0)/b/n/12 : \TU
+/SourceCodePro(0)/b/n/12 stack_in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1039
+\TU/SourceCodePro(0)/b/n/12 = PC+1 = 0x019\TU/SourceSerif4(0)/b/n/12 ; el conta
+dor
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1039
+\TU/SourceSerif4(0)/b/n/12 de programa apunta al segun-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1039
+\TU/SourceSerif4(0)/b/n/12 do byte. El proceso secuencial
+ []
+
+
+Underfull \hbox (badness 7151) in paragraph at lines 1039--1039
+\TU/SourceSerif4(0)/b/n/12 detecta \TU/SourceCodePro(0)/b/n/12 is_2byte='1' \TU
+/SourceSerif4(0)/b/n/12 y transi-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1039
+\TU/SourceSerif4(0)/b/n/12 ciona \TU/SourceCodePro(0)/b/n/12 current_frag $\OMS
+/cmsy/m/n/12  $ \TU/SourceCodePro(0)/b/n/12 '1' \TU/SourceSerif4(0)/b/n/12 y
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+[]|\TU/SourceSerif4(0)/b/n/12 La ROM vuelca \TU/SourceCodePro(0)/b/n/12 "0010" 
+\TU/SourceSerif4(0)/b/n/12 al bus.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+\TU/SourceCodePro(0)/b/n/12 disable_ir='1' \TU/SourceSerif4(0)/b/n/12 bloquea l
+a car-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+\TU/SourceSerif4(0)/b/n/12 almacena \TU/SourceCodePro(0)/b/n/12 second_byte_reg
+[7:4]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+[]|\TU/SourceSerif4(0)/b/n/12 La ROM vuelca \TU/SourceCodePro(0)/b/n/12 "1010" 
+\TU/SourceSerif4(0)/b/n/12 al bus.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+\TU/SourceCodePro(0)/b/n/12 second_byte_reg[3:0] $\OMS/cmsy/m/n/12  $
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+\TU/SourceCodePro(0)/b/n/12 "1010"\TU/SourceSerif4(0)/b/n/12 ; \TU/SourceCodePr
+o(0)/b/n/12 second_byte_reg =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+[]|\TU/SourceSerif4(0)/b/n/12 La lógica combinacional evalúa la
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+\TU/SourceSerif4(0)/b/n/12 condición de salto: \TU/SourceCodePro(0)/b/n/12 cond
+_accum
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+\TU/SourceCodePro(0)/b/n/12 = (ACC = "0000") \TU/SourceSerif4(0)/b/n/12 (IR[2]=
+’1’);
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+\TU/SourceCodePro(0)/b/n/12 cond_carry = '0' \TU/SourceSerif4(0)/b/n/12 (IR[1]=
+’0’);
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+\TU/SourceCodePro(0)/b/n/12 cond_test = '0' \TU/SourceSerif4(0)/b/n/12 (IR[0]=’
+0’).
+ []
+
+
+Underfull \hbox (badness 3078) in paragraph at lines 1085--1085
+\TU/SourceCodePro(0)/b/n/12 jcn_taken = cond_met \TU/SourceSerif4(0)/b/n/12 (si
+n inver-
+ []
+
+
+Underfull \hbox (badness 4531) in paragraph at lines 1085--1085
+\TU/SourceSerif4(0)/b/n/12 sión, IR[3]=’0’). \TU/SourceCodePro(0)/b/n/12 target
+_jump_addr
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+[]|\TU/SourceSerif4(0)/b/n/12 Si ACC = 0 (\TU/SourceCodePro(0)/b/n/12 jcn_taken
+='1'\TU/SourceSerif4(0)/b/n/12 ):
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+[]|\TU/SourceSerif4(0)/b/n/12 Si ACC $\OMS/cmsy/m/n/12 6\OT1/cmr/m/n/12 =$ \TU/
+SourceSerif4(0)/b/n/12 0 (\TU/SourceCodePro(0)/b/n/12 jcn_taken='0'\TU/SourceSe
+rif4(0)/b/n/12 ):
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+\TU/SourceCodePro(0)/b/n/12 stack_in = PC+1 = 0x01A $\OMS/cmsy/m/n/12 )$
+ []
+
+
+Underfull \hbox (badness 1331) in paragraph at lines 1085--1085
+[]|\TU/SourceCodePro(0)/b/n/12 current_frag \TU/SourceSerif4(0)/b/n/12 y \TU/So
+urceCodePro(0)/b/n/12 disable_ir \TU/SourceSerif4(0)/b/n/12 vuel-
+ []
+
+LaTeX Info: Redefining \. on input line 1087.
+LaTeX Info: Redefining \% on input line 1087.
+[24]
+LaTeX Info: Redefining \. on input line 1100.
+LaTeX Info: Redefining \% on input line 1100.
+ [25]
+Underfull \hbox (badness 5817) in paragraph at lines 1136--1136
 []|\TU/SourceCodePro(0)/b/n/12 WRM\TU/SourceSerif4(0)/b/n/12 , \TU/SourceCodePr
 o(0)/b/n/12 RDM\TU/SourceSerif4(0)/b/n/12 , \TU/SourceCodePro(0)/b/n/12 WR0\TU/
 SourceSerif4(0)/b/n/12 –\TU/SourceCodePro(0)/b/n/12 WR3\TU/SourceSerif4(0)/b/n/
@@ -1766,65 +2097,65 @@ ro(0)/b/n/12 RD3\TU/SourceSerif4(0)/b/n/12 , \TU/SourceCodePro(0)/b/n/12 ADM\TU
 n/12 . La señal
  []
 
-LaTeX Info: Redefining \. on input line 955.
-LaTeX Info: Redefining \% on input line 955.
-[21]
+LaTeX Info: Redefining \. on input line 1140.
+LaTeX Info: Redefining \% on input line 1140.
+[26]
 Capítulo 5.
-[22
+[27
 
 ]
 Capítulo 6.
 
-Overfull \hbox (58.79611pt too wide) in paragraph at lines 986--989
+Overfull \hbox (58.79611pt too wide) in paragraph at lines 1171--1174
 []\TU/SourceSerif4(0)/b/n/12 El diseño ha sido sintetizado e implementado con V
 ivado sobre la Basys 3 Artix-7 XC7A35TICPG236-
  []
 
-[23
+[28
 
 ]
 Capítulo 7.
-[24
+[29
 
 ]
 Apéndice A.
-[25
+[30
 
 ]
-LaTeX Info: Redefining \. on input line 1054.
-LaTeX Info: Redefining \% on input line 1054.
- [26]
+LaTeX Info: Redefining \. on input line 1239.
+LaTeX Info: Redefining \% on input line 1239.
+ [31]
 
-LaTeX Warning: Empty bibliography on input line 1054.
+LaTeX Warning: Empty bibliography on input line 1239.
 
 No file memoria.gls.
 
-Overfull \hbox (8.48962pt too wide) in paragraph at lines 1054--1054
+Overfull \hbox (8.48962pt too wide) in paragraph at lines 1239--1239
 []\TU/SourceSerif4(0)/b/n/12 This document is incomplete. The external file ass
 ociated with the glossary ‘main’ (which
  []
 
 
-Overfull \hbox (0.46005pt too wide) in paragraph at lines 1054--1054
+Overfull \hbox (0.46005pt too wide) in paragraph at lines 1239--1239
 []\TU/SourceSerif4(0)/b/n/12 Add \TU/SourceCodePro(0)/b/n/12 automake \TU/Sourc
 eSerif4(0)/b/n/12 to your package option list when you load \TU/SourceCodePro(0
 )/b/n/12 glossaries-extra.sty\TU/SourceSerif4(0)/b/n/12 .
  []
 
 No file memoria.acr.
-[27
+[32
 
 
 ]
-Overfull \hbox (0.46005pt too wide) in paragraph at lines 1054--1054
+Overfull \hbox (0.46005pt too wide) in paragraph at lines 1239--1239
 []\TU/SourceSerif4(0)/b/n/12 Add \TU/SourceCodePro(0)/b/n/12 automake \TU/Sourc
 eSerif4(0)/b/n/12 to your package option list when you load \TU/SourceCodePro(0
 )/b/n/12 glossaries-extra.sty\TU/SourceSerif4(0)/b/n/12 .
  []
 
-LaTeX Info: Redefining \. on input line 1054.
-LaTeX Info: Redefining \% on input line 1054.
-[28]
+LaTeX Info: Redefining \. on input line 1239.
+LaTeX Info: Redefining \% on input line 1239.
+[33]
 File: upm-report/images/etsisi-isotipo-white.pdf Graphic file (type pdf)
 <use upm-report/images/etsisi-isotipo-white.pdf>
  (/usr/local/texlive/2026/texmf-dist/tex/generic/stringenc/se-utf32be.def
@@ -1833,7 +2164,7 @@ File: se-utf32be.def 2019/11/29 v1.12 stringenc: UTF-32BE
 (/usr/local/texlive/2026/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 )
-[29
+[34
 
 ] (./memoria.aux
 LaTeX Info: Redefining \sptext on input line 20.
@@ -1849,18 +2180,18 @@ L3 programming layer <2026-01-19>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `memoria.out' has not changed.
-(rerunfilecheck)             Checksum: 4C8DCAC315D706A706844B34545EA1F5;4368.
+(rerunfilecheck)             Checksum: 2C976AD54B6640C7961AE9C800FE2040;4697.
 Package logreq Info: Writing requests to 'memoria.run.xml'.
 \openout1 = `memoria.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 43399 strings out of 468168
- 852204 string characters out of 5432815
- 1968886 words of memory out of 5000000
- 71557 multiletter control sequences out of 15000+600000
+ 43408 strings out of 468168
+ 852339 string characters out of 5432815
+ 1969587 words of memory out of 5000000
+ 71566 multiletter control sequences out of 15000+600000
  634833 words of font info for 118 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  92i,12n,107p,2537b,32833s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on memoria.xdv (37 pages, 450760 bytes).
+Output written on memoria.xdv (42 pages, 514852 bytes).

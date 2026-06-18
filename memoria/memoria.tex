@@ -914,6 +914,191 @@ físicos de la Basys~3.  Sus responsabilidades son:
 \end{table}
 
 % ----------------------------------------------------------------------
+\section{Traza de ejecución de instrucciones representativas}
+\label{s:traza}
+% ----------------------------------------------------------------------
+
+Para ilustrar el funcionamiento conjunto de todos los bloques se detallan
+a continuación dos instrucciones representativas extraídas del programa de
+la calculadora: \texttt{ADD~R1} (aritmética de un ciclo de máquina) y
+\texttt{JCN} (salto condicional de dos ciclos).  Entre ambas cubren la
+ruta de datos aritmética completa, el mecanismo de instrucciones de
+2~bytes y la lógica de actualización del contador de programa.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{ADD R1 --- instrucción aritmética de un ciclo}
+
+\texttt{ADD~R1} tiene el opcode \texttt{0x81} (nibble alto \texttt{1000},
+nibble bajo \texttt{0001}).  En el ejemplo se asume: acumulador = 3,
+R1 = 5, flag de carry = \texttt{'0'}.  El resultado esperado es ACC
+= 8 con carry = \texttt{'0'}.
+
+\begin{table}[H]
+\centering
+\caption{Traza ciclo a ciclo de \texttt{ADD R1} (ACC=3, R1=5, C=0)}
+\label{tab:traza-add}
+\begin{tabularx}{\textwidth}{@{}llX@{}}
+\toprule
+\textbf{Estado} & \textbf{Señales activas} & \textbf{Acción} \\
+\midrule
+A1 & \texttt{sync, stack\_oe} &
+    La pila serializa PC[3:0] al bus D0--D3 (\texttt{ext\_dir='0'}).
+    La ROM latcha el nibble bajo de la dirección
+    (\texttt{addr\_reg[3:0]}). \\
+\addlinespace
+A2 & \texttt{stack\_oe} &
+    La pila serializa PC[7:4].
+    La ROM latcha el nibble medio (\texttt{addr\_reg[7:4]}). \\
+\addlinespace
+A3 & \texttt{stack\_oe, cm\_rom} &
+    La pila serializa PC[11:8]; chip select activado.
+    La ROM ensambla la dirección completa y lee la instrucción:
+    \texttt{data\_reg $\leftarrow$ 0x81}. \\
+\addlinespace
+M1 & \texttt{cm\_rom, ext\_dir='1',} \newline \texttt{load\_ir\_high} &
+    La ROM vuelca el nibble alto \texttt{"1000"} al bus.
+    El buffer externo lo introduce en el bus interno.
+    El \acrshort{ir} captura IR[7:4] $\leftarrow$ \texttt{"1000"}. \\
+\addlinespace
+M2 & \texttt{ext\_dir='1', load\_ir\_low} &
+    La ROM vuelca el nibble bajo \texttt{"0001"} al bus.
+    IR[3:0] $\leftarrow$ \texttt{"0001"}.
+    El decodificador activa \texttt{inst\_group(8)} (grupo ADD) e
+    \texttt{is\_2byte='0'}. \\
+\addlinespace
+X1 & \texttt{scratch\_oe, tmp\_load} &
+    El scratchpad selecciona R1 (índice IR[3:0] = \texttt{"0001"})
+    y vuelca el valor \texttt{5} al bus interno.
+    El registro temporal captura TEMP $\leftarrow$ \texttt{5}. \\
+\addlinespace
+X2 & \texttt{alu\_op="000",} \newline
+    \texttt{alu\_oe, acc\_load,} \newline
+    \texttt{flags\_load} &
+    La \acrshort{alu} calcula $3 + 5 + 0 = 8$ con carry\_out =
+    \texttt{'0'} (entradas: A = ACC, B = TEMP, carry\_in = C).
+    El resultado \texttt{8} se vuelca al bus interno.
+    El acumulador captura ACC $\leftarrow$ \texttt{8};
+    los flags capturan C $\leftarrow$ \texttt{'0'}. \\
+\addlinespace
+X3 & \texttt{stack\_en} &
+    \texttt{current\_frag='0'} y \texttt{jump\_taken\_active='0'},
+    por lo que \texttt{stack\_in = PC+1}.
+    La pila actualiza el contador de programa al siguiente opcode. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+El camino completo del datapath aritmético queda así: el scratchpad
+expone el operando en el bus interno durante X1; el registro temporal lo
+captura; durante X2 la \acrshort{alu} opera con el acumulador y el
+registro temporal como entradas, y vuelca el resultado al mismo bus; el
+acumulador y los flags se actualizan en el flanco ascendente de
+\texttt{clk\_ph1} que cierra X2.  El conjunto de X1 y X2 basta para
+completar la aritmética en un único ciclo de máquina.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{JCN --- salto condicional de dos ciclos}
+
+\texttt{JCN} (opcode \texttt{0x1X}) es una instrucción de 2~bytes:
+el primer byte codifica la condición en su nibble bajo; el segundo byte
+contiene la dirección de destino dentro de la página actual.
+
+El ejemplo usa la instrucción en la posición \texttt{0x018} del programa
+(\texttt{JCN~Z, 0x2A}, opcode \texttt{0x14}): si el acumulador es cero
+salta a \texttt{0x02A}; si no, continúa en \texttt{0x01A}.
+
+\begin{table}[H]
+\centering
+\caption{Traza de \texttt{JCN Z, 0x2A} --- ciclo 1 (fetch del opcode)}
+\label{tab:traza-jcn-c1}
+\begin{tabularx}{\textwidth}{@{}llX@{}}
+\toprule
+\textbf{Estado} & \textbf{Señales activas} & \textbf{Acción} \\
+\midrule
+A1--A3 & \texttt{stack\_oe, cm\_rom} &
+    La pila vuelca PC = \texttt{0x018} en tres nibbles.
+    La ROM ensambla la dirección y lee \texttt{0x14}. \\
+\addlinespace
+M1--M2 & \texttt{ext\_dir='1',} \newline
+    \texttt{load\_ir\_high/low} &
+    IR $\leftarrow$ \texttt{0x14}.
+    El decodificador activa \texttt{inst\_group(1)} (grupo JCN) y
+    aserta \texttt{is\_2byte='1'}. \\
+\addlinespace
+X1--X2 & --- &
+    JCN no opera el datapath en el primer ciclo; ninguna señal de
+    registro queda activa. \\
+\addlinespace
+X3 & \texttt{stack\_en} &
+    \texttt{current\_frag='0'}: \texttt{stack\_in = PC+1 = 0x019};
+    el contador de programa apunta al segundo byte.
+    El proceso secuencial detecta \texttt{is\_2byte='1'} y transiciona
+    \texttt{current\_frag $\leftarrow$ '1'} y
+    \texttt{disable\_ir $\leftarrow$ '1'} para el ciclo siguiente. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Traza de \texttt{JCN Z, 0x2A} --- ciclo 2 (segundo byte y resolución del salto)}
+\label{tab:traza-jcn-c2}
+\begin{tabularx}{\textwidth}{@{}llX@{}}
+\toprule
+\textbf{Estado} & \textbf{Señales activas} & \textbf{Acción} \\
+\midrule
+A1--A3 & \texttt{stack\_oe, cm\_rom} &
+    La pila vuelca PC = \texttt{0x019}.
+    La ROM lee el segundo byte \texttt{0x2A}. \\
+\addlinespace
+M1 & \texttt{ext\_dir='1'} \newline
+    (\texttt{disable\_ir='1'}) &
+    La ROM vuelca \texttt{"0010"} al bus.
+    \texttt{disable\_ir='1'} bloquea la carga del \acrshort{ir};
+    IR conserva \texttt{0x14} (opcode del primer byte).
+    El proceso de captura almacena
+    \texttt{second\_byte\_reg[7:4] $\leftarrow$ "0010"}. \\
+\addlinespace
+M2 & \texttt{ext\_dir='1'} \newline
+    (\texttt{disable\_ir='1'}) &
+    La ROM vuelca \texttt{"1010"} al bus.
+    \texttt{second\_byte\_reg[3:0] $\leftarrow$ "1010"};
+    \texttt{second\_byte\_reg = 0x2A}. \\
+\addlinespace
+X1--X2 & --- &
+    La lógica combinacional evalúa la condición de salto:
+    \texttt{cond\_accum = (ACC = "0000")} (IR[2]='1');
+    \texttt{cond\_carry = '0'} (IR[1]='0');
+    \texttt{cond\_test = '0'} (IR[0]='0').
+    \texttt{jcn\_taken = cond\_met} (sin inversión, IR[3]='0').
+    \texttt{target\_jump\_addr = PC[11:8]\,\&\,0x2A = 0x02A}. \\
+\addlinespace
+X3 & \texttt{stack\_en} &
+    \textbf{Si ACC = 0} (\texttt{jcn\_taken='1'}):
+    \texttt{stack\_in = 0x02A} $\Rightarrow$ PC $\leftarrow$ \texttt{0x02A}. \\
+    & &
+    \textbf{Si ACC $\neq$ 0} (\texttt{jcn\_taken='0'}):
+    \texttt{stack\_in = PC+1 = 0x01A} $\Rightarrow$ ejecución continúa. \\
+    & &
+    \texttt{current\_frag} y \texttt{disable\_ir} vuelven a \texttt{'0'}. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+La instrucción \texttt{JCN} pone de manifiesto tres mecanismos que
+\texttt{ADD} no involucra.  Primero, la señal \texttt{disable\_ir}
+preserva el opcode original durante el fetch del segundo byte,
+impidiendo que el \acrshort{ir} sobreescriba la instrucción en curso.
+Segundo, los nibbles del segundo byte se capturan en
+\texttt{second\_byte\_reg} durante M1 y M2 del segundo ciclo,
+acumulando la dirección de destino sin alterar ningún registro
+arquitectónico.  Tercero, la evaluación de la condición es
+combinacional y continua: el resultado (\texttt{jcn\_taken}) está
+disponible antes de X3 y determina, en ese mismo estado, si la pila
+escribe la dirección de salto o el incremento normal del contador de
+programa.
+
+% ----------------------------------------------------------------------
 \section{Limitaciones respecto a la especificación}
 \label{s:limitaciones}
 % ----------------------------------------------------------------------
